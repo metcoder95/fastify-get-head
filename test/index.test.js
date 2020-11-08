@@ -70,7 +70,7 @@ test('Should set a HEAD route for each GET one', (t) => {
   })
 })
 
-test('Should not set a HEAD a head route for an ignored path/url (single string)', (t) => {
+test('Should not set a HEAD route for an ignored path/url (single string)', (t) => {
   t.plan(6)
   const server = Fastify()
   server.register(plugin, {
@@ -102,7 +102,7 @@ test('Should not set a HEAD a head route for an ignored path/url (single string)
   })
 })
 
-test('Should not set a HEAD a head route for an ignored path/url (single regex)', (t) => {
+test('Should not set a HEAD route for an ignored path/url (single regex)', (t) => {
   t.plan(6)
   const server = Fastify()
   server.register(plugin, {
@@ -134,7 +134,7 @@ test('Should not set a HEAD a head route for an ignored path/url (single regex)'
   })
 })
 
-test('Should not set a HEAD a head route for an ignored path/url (array of strings)', (t) => {
+test('Should not set a HEAD route for an ignored path/url (array of strings)', (t) => {
   t.plan(8)
   const server = Fastify()
   server.register(plugin, {
@@ -179,7 +179,7 @@ test('Should not set a HEAD a head route for an ignored path/url (array of strin
   })
 })
 
-test('Should not set a HEAD a head route for an ignored path/url (array of regex)', (t) => {
+test('Should not set a HEAD route for an ignored path/url (array of regex)', (t) => {
   t.plan(8)
   const server = Fastify()
   server.register(plugin, {
@@ -227,7 +227,7 @@ test('Should not set a HEAD a head route for an ignored path/url (array of regex
   })
 })
 
-test('Should not set a HEAD a head route for an ignored path/url (array of regex and string)', (t) => {
+test('Should not set a HEAD route for an ignored path/url (array of regex and string)', (t) => {
   t.plan(8)
   const server = Fastify()
   server.register(plugin, {
