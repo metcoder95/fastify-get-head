@@ -1,6 +1,6 @@
 # fastify-get-head
 
-<!-- [![Build Status](https://travis-ci.org/fastify/fastify-cookie.svg?branch=master)](https://travis-ci.org/fastify/fastify-cookie) -->
+![Build Status](https://github.com/MetCoder95/fastify-get-head/workflows/CI/badge.svg?branch=main)
 
 A plugin for [Fastify](http://fastify.io/) that adds support for setting a `HEAD` route for each `GET` one previously registered.
 
