@@ -271,3 +271,63 @@ test('Should not set a HEAD a head route for an ignored path/url (array of regex
     t.equal(res.headers['content-type'], undefined)
   })
 })
+
+test('Should set a HEAD route for a GET one respecting onSend handlers (array)', (t) => {
+  t.plan(6)
+  const server = Fastify()
+  server.register(plugin, {})
+
+  server.register(
+    function (fastifyInstance, opts, done) {
+      fastifyInstance.get('/string', {
+        onSend: [
+          (req, reply, payload, done) => reply.header('x-handler-1', true) && done(null, payload),
+          (req, reply, payload, done) => reply.header('x-handler-2', true) && done(null, payload)
+        ]
+      },
+      (req, reply) => {
+        reply.send('Hello world!')
+      })
+
+      done()
+    },
+    { prefix: '/api' }
+  )
+
+  server.inject({ method: 'HEAD', url: '/api/string' }, (err, res) => {
+    t.error(err)
+    t.strictEqual(res.statusCode, 200)
+    t.strictEqual(res.headers['content-length'], `${'Hello world!'.length}`)
+    t.strictEqual(res.headers['content-type'], 'text/plain; charset=utf-8')
+    t.strictEqual(res.headers['x-handler-1'], true)
+    t.strictEqual(res.headers['x-handler-2'], true)
+  })
+})
+
+test('Should set a HEAD route for a GET one respecting onSend handlers (single handler)', (t) => {
+  t.plan(5)
+  const server = Fastify()
+  server.register(plugin, {})
+
+  server.register(
+    function (fastifyInstance, opts, done) {
+      fastifyInstance.get('/string', {
+        onSend: (req, reply, payload, done) => reply.header('x-handler-1', true) && done(null, payload)
+      },
+      (req, reply) => {
+        reply.send({ hello: 'world' })
+      })
+
+      done()
+    },
+    { prefix: '/api' }
+  )
+
+  server.inject({ method: 'HEAD', url: '/api/string' }, (err, res) => {
+    t.error(err)
+    t.strictEqual(res.statusCode, 200)
+    t.strictEqual(res.headers['content-length'], `${Buffer.byteLength(JSON.stringify({ hello: 'world' }))}`)
+    t.strictEqual(res.headers['content-type'], 'application/json; charset=utf-8')
+    t.strictEqual(res.headers['x-handler-1'], true)
+  })
+})

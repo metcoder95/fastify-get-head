@@ -36,6 +36,11 @@ function onSendHandler (req, reply, payload, done) {
   done(null, null)
 }
 
+function parseHandlers (handlers) {
+  if (handlers == null) return onSendHandler
+  return Array.isArray(handlers) ? [...handlers, onSendHandler] : [handlers, onSendHandler]
+}
+
 function getSetupHeadRoutingForGet (fastify, pathsToIgnore) {
   return function setupHeadRouteForGet (routeOpts) {
     const {
@@ -45,6 +50,7 @@ function getSetupHeadRoutingForGet (fastify, pathsToIgnore) {
       handler,
       prefix,
       routePath,
+      onSend,
       ...routeConfig
     } = routeOpts
     const isNotGetMethod = method !== 'GET'
@@ -58,7 +64,7 @@ function getSetupHeadRoutingForGet (fastify, pathsToIgnore) {
       path,
       handler,
       method: 'HEAD',
-      onSend: onSendHandler
+      onSend: parseHandlers(onSend)
     })
   }
 }
