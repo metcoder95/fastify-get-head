@@ -5,7 +5,7 @@ import plugin from '..'
 const serverHttp = fastify()
 
 serverHttp.register(plugin, {
-  ignorePaths: ['/api/with/buffer'],
+  ignorePaths: ['/api/with/buffer']
 })
 
 // ->First plugin
@@ -37,7 +37,7 @@ serverHttp.register(
         done2()
       },
       {
-        prefix: '/with',
+        prefix: '/with'
       }
     )
 
@@ -49,7 +49,7 @@ serverHttp.register(
 const serverHttp2 = fastify({ http2: true })
 
 serverHttp2.register(plugin, {
-  ignorePaths: ['/api/with/buffer'],
+  ignorePaths: ['/api/with/buffer']
 })
 
 // -> First plugin
@@ -81,7 +81,7 @@ serverHttp2.register(
         done2()
       },
       {
-        prefix: '/with',
+        prefix: '/with'
       }
     )
 
