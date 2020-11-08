@@ -69,8 +69,8 @@ function getSetupHeadRoutingForGet (fastify, pathsToIgnore) {
   }
 }
 
-function plugin (fastify, opts = {}, done) {
-  const pathsToIgnore = opts !== null && opts.ignorePaths
+function plugin (fastify, opts, done) {
+  const pathsToIgnore = opts != null && opts.ignorePaths
 
   fastify.addHook('onRoute', getSetupHeadRoutingForGet(fastify, pathsToIgnore))
 
