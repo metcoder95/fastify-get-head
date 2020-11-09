@@ -19,6 +19,13 @@
     "head"
   ],
   "author": "Carlos Fuentes <carlos.fuentes.rios.95@gmail.com>",
+  "repository": {
+    "url": "https://github.com/MetCoder95/fastify-get-head"
+  },
+  "bugs": {
+    "url": "https://github.com/MetCoder95/fastify-get-head/issues"
+  },
+  "homepage": "https://github.com/MetCoder95/fastify-get-head",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^14.14.7",
