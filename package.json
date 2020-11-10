@@ -1,0 +1,50 @@
+{
+  "name": "fastify-get-head",
+  "version": "1.0.0",
+  "description": "Set a HEAD route handler for each GET handler previously registered",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "tap test/*.test.js && npm run typescript",
+    "test-ci": "tap --cov test/*.test.js && npm run typescript",
+    "lint": "standard | snazzy",
+    "lint-ci": "standard",
+    "typescript": "tsd"
+  },
+  "keywords": [
+    "fastify",
+    "fastify-get-head",
+    "http",
+    "get",
+    "head"
+  ],
+  "author": "Carlos Fuentes <carlos.fuentes.rios.95@gmail.com>",
+  "repository": {
+    "url": "https://github.com/MetCoder95/fastify-get-head"
+  },
+  "bugs": {
+    "url": "https://github.com/MetCoder95/fastify-get-head/issues"
+  },
+  "homepage": "https://github.com/MetCoder95/fastify-get-head",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^14.14.7",
+    "fastify": "^3.8.0",
+    "pre-commit": "^1.2.2",
+    "snazzy": "^9.0.0",
+    "standard": "^16.0.1",
+    "tap": "^12.6.6",
+    "tsd": "^0.13.1",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "fastify-plugin": "^3.0.0"
+  },
+  "tsd": {
+    "directory": "test"
+  },
+  "precommit": [
+    "lint",
+    "test"
+  ]
+}
