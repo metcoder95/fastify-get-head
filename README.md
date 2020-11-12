@@ -1,6 +1,8 @@
 # fastify-get-head
 
+![npm](https://img.shields.io/npm/v/fastify-get-head?color=dark-green&style=flat-square)
 ![Build Status](https://github.com/MetCoder95/fastify-get-head/workflows/CI/badge.svg?branch=main)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 A plugin for [Fastify](http://fastify.io/) that adds support for setting a `HEAD` route for each `GET` one previously registered.
 
