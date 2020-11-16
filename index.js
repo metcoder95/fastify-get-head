@@ -21,6 +21,12 @@ function ignorePath (path, pathsToIgnore) {
 }
 
 function onSendHandler (req, reply, payload, done) {
+  // If payload is undefined
+  if (payload === undefined) {
+    reply.header('content-length', '0')
+    return done(null, null)
+  }
+
   // If is a stream, we remove any header without appending
   // content-length one, and resume it right away
   if (typeof payload.resume === 'function') {
