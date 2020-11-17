@@ -331,3 +331,38 @@ test('Should set a HEAD route for a GET one respecting onSend handlers (single h
     t.strictEqual(res.headers['x-handler-1'], true)
   })
 })
+
+test('Should reply with content-length === 0 when payload undefined', (t) => {
+  t.plan(8)
+  const server = Fastify()
+  server.register(plugin, {})
+
+  server.register(
+    function (fastifyInstance, opts, done) {
+      fastifyInstance.get('/null', (req, reply) => {
+        reply.status(200).send(null)
+      })
+
+      fastifyInstance.get('/undefined', (req, reply) => {
+        reply.status(200).send()
+      })
+
+      done()
+    },
+    { prefix: '/api' }
+  )
+
+  server.inject({ method: 'HEAD', url: '/api/null' }, (err, res) => {
+    t.error(err)
+    t.strictEqual(res.statusCode, 200)
+    t.strictEqual(res.headers['content-length'], '4')
+    t.strictEqual(res.body, '')
+  })
+
+  server.inject({ method: 'HEAD', url: '/api/undefined' }, (err, res) => {
+    t.error(err)
+    t.strictEqual(res.statusCode, 200)
+    t.strictEqual(res.headers['content-length'], '0')
+    t.strictEqual(res.body, '')
+  })
+})
