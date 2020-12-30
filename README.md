@@ -21,21 +21,20 @@ fastify.register(require('fastify-get-head'), {
 });
 
 fastify.get('/', (req, reply) => {
-  reply.status(200).send({ hello: 'world' })
+  reply.status(200).send({ hello: 'world' });
 });
 
-/**
- * The plugin will create a new HEAD route where just the headers will be sent
- * Same as doing:
-*/
+// The plugin will create a new HEAD route where just the headers will be sent
+// Same as doing:
 
-// fastify.head('/', (req, reply) => {
-//   reply.headers({
-//     ['content-length']: Buffer.from(JSON.stringify({ hello: 'world' })).byteLength
-//     ['content-type']: 'application/json'
-//   });
-//   reply.status(200).send(null);
-// });
+/** 
+ * fastify.head('/', (req, reply) => {
+ *  reply.headers({
+ *    ['content-length']: Buffer.from(JSON.stringify({ hello: 'world' })).byteLength
+ *    ['content-type']: 'application/json'
+ *  });
+ *  reply.status(200).send(null);
+ * });
 ```
 
 ## Options
