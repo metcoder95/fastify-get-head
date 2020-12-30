@@ -84,6 +84,6 @@ function plugin (fastify, opts, done) {
 }
 
 module.exports = fp(plugin, {
-  fastify: '>=3.8.0',
+  fastify: '>=3.8 <= 3.9',
   name: 'fastify-get-head'
 })

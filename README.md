@@ -8,7 +8,8 @@ A plugin for [Fastify](http://fastify.io/) that adds support for setting a `HEAD
 
 This plugin's works via Fastify's `onRoute` hook. When a new route is registered, the plugin will try to set a new `HEAD` route if the registered one is for a `GET` method and is not ignored by the `ignorePaths` option.
 
-`fastify-get-head` only supports Fastify@^3.8
+**Note**: `fastify-get-head` only supports Fastify@>=3.8 <= 3.9
+
 <!-- Will be updated once https://github.com/fastify/fastify/commit/449fc5c25e7d2e277e68bb3f4416cfd858a71cec is released -->
 
 ## Example
