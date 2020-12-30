@@ -1,6 +1,6 @@
 {
   "name": "fastify-get-head",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Set a HEAD route handler for each GET handler previously registered",
   "main": "index.js",
   "types": "index.d.ts",
