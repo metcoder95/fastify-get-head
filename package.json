@@ -33,7 +33,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20",
-    "fastify": "^3.9.2",
+    "fastify": "^4.17.0",
     "pre-commit": "^1.2.2",
     "snazzy": "^9.0.0",
     "standard": "^16.0.1",
