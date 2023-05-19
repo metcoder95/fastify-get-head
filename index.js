@@ -7,9 +7,7 @@ function ignorePath (path, pathsToIgnore) {
     return pathsToIgnore.some((predicate) =>
       predicate instanceof RegExp
         ? predicate.test(path)
-        : typeof predicate === 'string'
-          ? predicate === path
-          : false
+        : predicate === path
     )
   }
 
@@ -17,7 +15,7 @@ function ignorePath (path, pathsToIgnore) {
   if (pathsToIgnore instanceof RegExp) return pathsToIgnore.test(path)
 
   // Plain string
-  if (typeof pathsToIgnore === 'string') return pathsToIgnore === path
+  return pathsToIgnore === path
 }
 
 function onSendHandler (req, reply, payload, done) {
@@ -60,7 +58,7 @@ function getSetupHeadRoutingForGet (fastify, pathsToIgnore) {
       ...routeConfig
     } = routeOpts
     const isNotGetMethod = method !== 'GET'
-    const shouldIgnore = pathsToIgnore && ignorePath(path, pathsToIgnore)
+    const shouldIgnore = pathsToIgnore != null && ignorePath(path, pathsToIgnore)
 
     // Only GET routes and allowed paths
     if (isNotGetMethod || shouldIgnore) return

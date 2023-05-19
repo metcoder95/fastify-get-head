@@ -5,12 +5,14 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "test": "tap test/*.test.js && npm run typescript",
-    "test-ci": "tap --cov test/*.test.js && npm run typescript",
     "lint": "standard | snazzy",
-    "lint-ci": "standard",
-    "typescript": "tsd",
-    "release": "npx standard-version"
+    "lint:ci": "standard",
+    "release": "npx standard-version",
+    "test": "tap test/*.test.js",
+    "test:ci": "tap --cov test/*.test.js",
+    "test:coverage": "tap --cov --coverage-report=html test/*.test.js",
+    "test:only": "tap test/*.test.js --only",
+    "test:ts": "tsd"
   },
   "engines": {
     "node": ">=16"
