@@ -9,8 +9,8 @@
     "lint:ci": "standard",
     "release": "npx standard-version",
     "test": "tap test/*.test.js",
-    "test:ci": "npm test && npm run test:ts && npm run lint:ci",
-    "test:coverage": "npm test -- --cov --coverage-report=html",
+    "test:ci": "tap --cov test/*.test.js",
+    "test:coverage": "tap --cov --coverage-report=html test/*.test.js",
     "test:only": "tap test/*.test.js --only",
     "test:ts": "tsd"
   },
